@@ -37,3 +37,18 @@ np.save('data/test_inputs_preprocessed.npy', test_inputs_imputed)
 np.save('data/train_targets.npy', train_targets)
 
 print("Data preprocessing complete.")
+----------------------------------------------------------------------------------------------------------------------------------------
+# Explanation
+# Load Data:
+The load_data function reads data from the HDF5 files and returns it as NumPy arrays.
+train_inputs, train_targets, and test_inputs are loaded from their respective HDF5 files.
+# Normalize Data:
+The StandardScaler is used to normalize the features. This standardization step ensures that each feature has a mean of 0 and a standard deviation of 1.
+# Dimensionality Reduction:
+The PCA (Principal Component Analysis) is applied to reduce the dimensionality of the data to 100 components. This can help reduce the complexity and improve model performance.
+# Impute Missing Values:
+The KNNImputer is used to fill in any missing values in the dataset. It uses the mean of the nearest neighbors to impute missing values.
+# Save Preprocessed Data:
+The preprocessed training inputs, test inputs, and training targets are saved as NumPy arrays in the data directory.
+Running the Code
+Save the script as data_preprocessing.py in the src directory and run it from the terminal:
