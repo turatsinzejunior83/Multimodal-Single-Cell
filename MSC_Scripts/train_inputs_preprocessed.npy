@@ -51,4 +51,4 @@ The KNNImputer is used to fill in any missing values in the dataset. It uses the
 # Save Preprocessed Data:
 The preprocessed training inputs, test inputs, and training targets are saved as NumPy arrays in the data directory.
 Running the Code
-Save the script as data_preprocessing.py in the src directory and run it from the terminal:
+Save the script as data_preprocessing.py in the src directory and run it from the terminal: python src/data_preprocessing.py
