@@ -17,15 +17,15 @@ def generate_train_targets(number_of_samples, number_of_targets, file_path, seed
         # Generate random data for regression targets
         train_targets = np.random.rand(number_of_samples, number_of_targets)
     
-    # Save the array to a .npy file
-    np.save(file_path, train_targets)
+    # Save the array to a .py file
+    np.savetxt(file_path, train_targets)
     print(f"Generated and saved {file_path}")
 
 # Define the parameters
 number_of_samples = 1000
 number_of_targets = 10
 directory_path = 'data'
-file_path = os.path.join(directory_path, 'train_targets.npy')
+file_path = os.path.join(directory_path, 'train_targets.py')
 
 # Ensure the directory exists
 create_directory(directory_path)
