@@ -58,7 +58,7 @@ generate_train_targets(
     seed=42, 
     is_classification=False  # Set to True if your targets are for classification
 )
-
+  
 # Explanation
 Creating Directories: The create_directory function ensures that the data directory exists before attempting to save any files.
 Generating Test Inputs: generate_test_inputs_preprocessed creates a NumPy array with random values from a normal distribution and saves it to test_inputs_preprocessed.npy.
