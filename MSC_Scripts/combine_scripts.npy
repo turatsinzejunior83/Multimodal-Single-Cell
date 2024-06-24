@@ -58,3 +58,11 @@ generate_train_targets(
     seed=42, 
     is_classification=False  # Set to True if your targets are for classification
 )
+
+# Explanation
+Creating Directories: The create_directory function ensures that the data directory exists before attempting to save any files.
+Generating Test Inputs: generate_test_inputs_preprocessed creates a NumPy array with random values from a normal distribution and saves it to test_inputs_preprocessed.npy.
+Generating Train Targets: generate_train_targets creates a NumPy array with either random binary values (for classification) or random float values (for regression) and saves it to train_targets.npy.
+Running the Script
+You can run this script in your Python environment. Make sure you have NumPy installed:pip install numpy
+Executing the script will generate two .npy files in the data directory: test_inputs_preprocessed.npy and train_targets.npy. Adjust the parameters as needed to fit your specific requirements.
