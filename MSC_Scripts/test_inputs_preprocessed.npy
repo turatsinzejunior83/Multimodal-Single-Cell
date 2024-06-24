@@ -1,0 +1,13 @@
+import numpy as np
+
+# Define the number of samples and features
+number_of_samples = 1000  # Adjust as needed
+number_of_features = 100  # As per PCA reduction to 100 components
+
+# Generate random data for test inputs
+test_inputs_preprocessed = np.random.rand(number_of_samples, number_of_features)
+
+# Save the array to a .npy file
+np.save('data/test_inputs_preprocessed.npy', test_inputs_preprocessed)
+
+print("Generated and saved test_inputs_preprocessed.npy")
