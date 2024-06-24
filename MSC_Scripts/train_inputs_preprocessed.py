@@ -32,9 +32,9 @@ train_inputs_imputed = imputer.fit_transform(train_inputs_pca)
 test_inputs_imputed = imputer.transform(test_inputs_pca)
 
 # Save preprocessed data
-np.save('data/train_inputs_preprocessed.npy', train_inputs_imputed)
-np.save('data/test_inputs_preprocessed.npy', test_inputs_imputed)
-np.save('data/train_targets.npy', train_targets)
+np.savetxt('data/train_inputs_preprocessed.py', train_inputs_imputed)
+np.savetxt('data/test_inputs_preprocessed.py', test_inputs_imputed)
+np.savetxt('data/train_targets.py', train_targets)
 
 print("Data preprocessing complete.")
 ----------------------------------------------------------------------------------------------------------------------------------------
