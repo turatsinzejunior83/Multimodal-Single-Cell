@@ -1,1 +1,29 @@
+import os
+import numpy as np
+import joblib
 
+def create_directory(directory_path):
+    """Create directory if it does not exist."""
+    os.makedirs(directory_path, exist_ok=True)
+
+# Directory to save the predictions
+predictions_directory = 'predictions'
+create_directory(predictions_directory)
+
+# Define the file path for the model and the predictions
+model_file_path = 'models/linear_regression.pkl'
+predictions_file_path = os.path.join(predictions_directory, 'lr_preds.npy')
+
+# Generate some random data for making predictions
+np.random.seed(42)
+X_test = np.random.rand(20, 10)  # 20 samples, 10 features (adjust as needed)
+
+# Load the trained Linear Regression model
+lr_model = joblib.load(model_file_path)
+
+# Make predictions using the model
+predictions = lr_model.predict(X_test)
+
+# Save the predictions to a .npy file
+np.save(predictions_file_path, predictions)
+print(f"Generated and saved {predictions_file_path}")
