@@ -61,3 +61,12 @@ transformer_model.fit(X_train_transformer, y_train, epochs=1, verbose=0)
 transformer_model_file = os.path.join(model_directory, 'transformer_model.h5')
 transformer_model.save(transformer_model_file)
 print(f"Generated and saved {transformer_model_file}")
+
+________________________________________________________________________________________________________________
+# Explanation
+1. Creating Directories: The create_directory function ensures that the models directory exists before saving any model files.
+2. Generating Random Data: Random training data is generated for fitting the models.
+3. Linear Regression Model: A simple linear regression model is created, trained, and saved using joblib.
+4. Random Forest Model: A random forest model is created, trained, and saved using joblib.
+5. LSTM Model: An LSTM model is created using TensorFlow/Keras, trained on reshaped data, and saved as an HDF5 file.
+6. Transformer Model: A simple transformer model is created using TensorFlow/Keras, trained on 3D data, and saved as an HDF5 file.
