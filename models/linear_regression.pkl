@@ -1,1 +1,63 @@
+import os
+import numpy as np
+from sklearn.linear_model import LinearRegression
+from sklearn.ensemble import RandomForestRegressor
+import joblib
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import LSTM, Dense
+from tensorflow.keras.models import Model
+from tensorflow.keras.layers import Input, MultiHeadAttention, LayerNormalization, Dropout
 
+def create_directory(directory_path):
+    """Create directory if it does not exist."""
+    os.makedirs(directory_path, exist_ok=True)
+
+# Directory to save the models
+model_directory = 'models'
+create_directory(model_directory)
+
+# Generate some random data for training the models
+np.random.seed(42)
+X_train = np.random.rand(100, 10)  # 100 samples, 10 features
+y_train = np.random.rand(100)      # 100 target values
+
+# Linear Regression Model
+linear_model = LinearRegression()
+linear_model.fit(X_train, y_train)
+joblib_file = os.path.join(model_directory, 'linear_regression.pkl')
+joblib.dump(linear_model, joblib_file)
+print(f"Generated and saved {joblib_file}")
+
+# Random Forest Model
+rf_model = RandomForestRegressor(n_estimators=100)
+rf_model.fit(X_train, y_train)
+joblib_file = os.path.join(model_directory, 'random_forest.pkl')
+joblib.dump(rf_model, joblib_file)
+print(f"Generated and saved {joblib_file}")
+
+# LSTM Model
+lstm_model = Sequential()
+lstm_model.add(LSTM(50, activation='relu', input_shape=(10, 1)))
+lstm_model.add(Dense(1))
+lstm_model.compile(optimizer='adam', loss='mse')
+lstm_model.fit(X_train.reshape((X_train.shape[0], X_train.shape[1], 1)), y_train, epochs=1, verbose=0)
+lstm_model_file = os.path.join(model_directory, 'lstm_model.h5')
+lstm_model.save(lstm_model_file)
+print(f"Generated and saved {lstm_model_file}")
+
+# Transformer Model
+def create_transformer_model(input_shape):
+    inputs = Input(shape=input_shape)
+    attention_output = MultiHeadAttention(num_heads=2, key_dim=2)(inputs, inputs)
+    attention_output = LayerNormalization()(attention_output + inputs)
+    outputs = Dense(1)(attention_output)
+    model = Model(inputs, outputs)
+    model.compile(optimizer='adam', loss='mse')
+    return model
+
+transformer_model = create_transformer_model((10, 10))
+X_train_transformer = np.random.rand(100, 10, 10)  # Adjust dimensions for transformer input
+transformer_model.fit(X_train_transformer, y_train, epochs=1, verbose=0)
+transformer_model_file = os.path.join(model_directory, 'transformer_model.h5')
+transformer_model.save(transformer_model_file)
+print(f"Generated and saved {transformer_model_file}")
