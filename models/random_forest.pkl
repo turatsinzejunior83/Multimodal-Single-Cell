@@ -1,1 +1,28 @@
+import os
+import numpy as np
+from sklearn.ensemble import RandomForestRegressor
+import joblib
 
+def create_directory(directory_path):
+    """Create directory if it does not exist."""
+    os.makedirs(directory_path, exist_ok=True)
+
+# Directory to save the model
+model_directory = 'models'
+create_directory(model_directory)
+
+# Define the file path for the model
+model_file_path = os.path.join(model_directory, 'random_forest.pkl')
+
+# Generate some random data for training the model
+np.random.seed(42)
+X_train = np.random.rand(100, 10)  # 100 samples, 10 features
+y_train = np.random.rand(100)      # 100 target values
+
+# Create and train the Random Forest model
+rf_model = RandomForestRegressor(n_estimators=100)
+rf_model.fit(X_train, y_train)
+
+# Save the model to a file
+joblib.dump(rf_model, model_file_path)
+print(f"Generated and saved {model_file_path}")
